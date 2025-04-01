@@ -23,10 +23,27 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
+  // Hinna arvutamine
+  const totalPrice = cart
+    .reduce((total, item) => {
+      // Teha kindlaks kas tegu on numbritega
+      const price = Number(item.price); 
+      const quantity = Number(item.quantity);
+      console.log(`Item: ${item.name}, Price: ${price}, Quantity: ${quantity}`);
+      
+      if (isNaN(price) || isNaN(quantity)) {
+        return total; 
+      }
+      return total + price * quantity;
+    }, 0)
+    .toFixed(2);
+
+  console.log('Total Price:', totalPrice);
+
   return (
     <header id="main-header">
       <div id="title">
-        <img src={logo}/>
+        <img src={logo} alt="Logo" />
         <h1>React Food Order App</h1>
       </div>
       <nav>
@@ -43,16 +60,20 @@ const Header = () => {
         <ul>
           {cart.map((item) => (
             <li key={item.id}>
-              {item.name} - {item.quantity}
+              {item.name} - {item.quantity} x{" "}
+              {new Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+              }).format(item.price)}
             </li>
           ))}
         </ul>
         <div className="cart-total">
           Total:{" "}
-          {cart
-            .reduce((total, item) => total + item.price * item.quantity, 0)
-            .toFixed(2)}{" "}
-          EUR
+          {new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR",
+          }).format(totalPrice)} 
         </div>
       </Modal>
     </header>

@@ -8,6 +8,8 @@ import React, { createContext, useReducer, useEffect } from "react";
        return [...state, action.item];
      case "REMOVE_ITEM":
        return state.filter((item) => item.id !== action.id);
+    case "RESET CART":
+        return [];
      default:
        return state;
    }
