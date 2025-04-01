@@ -1,6 +1,6 @@
 //pildid toidust liigutati public kausta, et veebileht saaks neid kuvada. Ilma selleta töötas leht küll aga pilte ette ei kuvatid...
 
-
+import Button from "./UI/Button";
 
 const MealItem = (props) => {
     
@@ -22,7 +22,7 @@ const MealItem = (props) => {
             <p>{props.meal.description}</p>
           </div>
           <div className="meal-item-actions">
-            <button>Add to Cart</button>
+            <button className="button">Add to Cart</button>
           </div>
         </article>
       </li>
