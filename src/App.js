@@ -1,15 +1,15 @@
-import Header from './components/Header';
-import Meals from './components/Meals';
+import Header from "./components/Header";
+ import Meals from "./components/Meals";
+ import { CartProvider } from "./store/CartContext.js";
+ 
+ const App = () => {
+   return (
 
+     <CartProvider>
+       <Header />
+       <Meals />
 
-const App = () => {
- return (
-    <>
-     <Header/>
-     <Meals/>
-     <p>Create a list of meals"</p>
-    </>
-  );
-}
-
-export default App;
+     </CartProvider>
+   );
+ };
+ export default App
