@@ -16,9 +16,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/meals", async (req, res) => {
-  const meals = "[]" // data should be read from file
-  res.json(JSON.parse(meals));
+//töötab ainult niipidi???
+app.get("/meals.json", async (req, res) => {
+  try {
+    const data = await fs.readFile(
+      path.join(__dirname, "data", "meals.json"),
+      "utf-8"
+    );
+    const meals = JSON.parse(data);
+    res.json(meals);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to load meals." });
+  }
 });
 
 app.use((req, res) => {
@@ -30,3 +39,4 @@ app.use((req, res) => {
 });
 
 app.listen(3001);
+console.log("Server started on port 3001");
