@@ -1,11 +1,25 @@
-const Meals = () => {
-    return (
-        <ul id="meals">
-            { 
-                // list of meals
-            }
-        </ul>
-    )
-}
+import { useEffect, useState } from "react";
 
-export default Meals
+ const Meals = () => {
+   const [meals, setMeals] = useState([]);
+ 
+   useEffect(() => {
+     const fetchMeals = async () => {
+       const response = await fetch("http://localhost:3001/meals.json");
+       const data = await response.json();
+       console.log(data);
+       setMeals(data);
+     };
+     fetchMeals();
+   }, []);
+ 
+   return (
+     <ul id="meals">
+       {meals.map((meal) => (
+         <li key={meal.id}>{meal.name}</li>
+       ))}
+     </ul>
+   );
+ };
+ 
+ export default Meals;
