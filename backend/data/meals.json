@@ -1,3 +1,4 @@
+
 [
   {
     "id": "m1",
@@ -137,6 +138,13 @@
     "name": "Falafel Wrap",
     "price": "8.99",
     "description": "Crispy falafels wrapped in a warm pita with lettuce, tomatoes, and a tahini sauce.",
+    "image": "/assets/images/falafel-wrap.jpg"
+  },
+  {
+    "id": "m21",
+    "name": "Test Sisend",
+    "price": "18.99",
+    "description": "wrapped in a warm pita with lettuce, tomatoes, and a tahini sauce.",
     "image": "/assets/images/falafel-wrap.jpg"
   }
 ]
